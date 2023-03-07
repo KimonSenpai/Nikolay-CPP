@@ -10,8 +10,34 @@ int Square(int n) {
   return n*n;
 }
 
-double sin(double phi) {
+double my_pow(double x, int n) {
+  double res = 1;
+  for (int i = 1; i <= n; i++) {
+    res *= x;
+  }
+  return res;
+}
+
+int fact(int n) {
+  int res = 1;
+  for (int i = 1; i <= n; ++i) {
+    res *= i;
+  }
+  return res;
+}
+
+double my_sin_old(double phi) {
   double res = phi - phi*phi*phi/6 + phi*phi*phi*phi*phi/120;
+  return res;
+}
+
+double my_sin(double phi) {
+  double res = 1;
+  int sign = 1;
+  for (int i = 1; i <= 13; i += 2) {
+    res += sign*my_pow(phi, i)/fact(i);
+    sign *= -1;
+  }
   return res;
 }
 
@@ -33,5 +59,5 @@ int main() {
 
   PrintInt(Square(val));
 
-  cout << sin(acos(-1)/4);
+  cout << my_sin(acos(-1)/4);
 }
