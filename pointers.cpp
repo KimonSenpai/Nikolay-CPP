@@ -14,7 +14,7 @@ int f() {
 }
 
 int main() {
-  volatile int k;
+  //volatile int k;
   int a = 5;
   int* b = &a;
   int c = 7;
@@ -29,4 +29,9 @@ int main() {
   b[-1] = 40;
   (-1)[b] = 50;
   cout << a << ' ' << c << '\n';
+
+  int* mas = new int[50];
+
+  *(mas + 5) = 40;
+  mas[5] = 40;
 }
